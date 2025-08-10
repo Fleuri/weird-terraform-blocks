@@ -15,7 +15,7 @@ component "vms" {
   }
 }
 
-component "storage" {
+/*component "storage" {
   for_each = var.deploy_gcs ? 1 : 0
 
   source = "./modules/gcs"
@@ -28,4 +28,16 @@ component "storage" {
   providers = {
     google = provider.google.this
   }
+}*/
+
+variable "regions" {
+  description = "List of regions to deploy VMs in"
+  type        = set(string)
 }
+
+/*
+variable "deploy_gcs" {
+  description = "Flag to deploy Google Cloud Storage bucket"
+  type        = bool
+}
+*/
