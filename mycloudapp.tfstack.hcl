@@ -1,15 +1,12 @@
-locals {
-  regions = ["europe-north1, europe-west1, europe-west2"]
-}
-
 component "vms" {
+  for_each = var.regions
+
   source = "./modules/vm"
 
-  for_each = var.regions
   inputs = {
     name         = "prod-vm-${each.value}"
     machine_type = "e2-medium"
-    zone         = "europe-north1-a"
+    zone         = "${each.value}-a"
     image        = "debian-11-bullseye-v20240415"
   }
 
@@ -19,8 +16,9 @@ component "vms" {
 }
 
 component "storage" {
-  source = "./modules/gcs"
   for_each = var.deploy_gcs ? 1 : 0
+
+  source = "./modules/gcs"
 
   inputs = {
     name     = "prod-storage-bucket"
