@@ -14,6 +14,8 @@ provider "google" "this" {
 }
 
 variable "gcp-creds" {
+  sensitive   = true
+  ephemeral   = true
   description = "The credentials for the Google Cloud provider"
   type        = string
 }
