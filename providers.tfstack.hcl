@@ -16,5 +16,4 @@ provider "google" "this" {
 variable "gcp-creds" {
   description = "The credentials for the Google Cloud provider"
   type        = string
-  default     = ""
 }
