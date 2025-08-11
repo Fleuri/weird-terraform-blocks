@@ -6,7 +6,7 @@ component "vms" {
   inputs = {
     name         = "prod-vm-${each.value}"
     machine_type = "e2-medium"
-    zone         = "${each.value}-a"
+    zone         = "${each.value}-b"
     image        = "debian-11-bullseye-v20240415"
   }
 
