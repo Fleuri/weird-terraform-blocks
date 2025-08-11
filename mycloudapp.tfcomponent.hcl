@@ -15,8 +15,8 @@ component "vms" {
   }
 }
 
-/*component "storage" {
-  for_each = var.deploy_gcs ? 1 : 0
+component "storage" {
+  for_each = var.deploy_gcs
 
   source = "./modules/gcs"
 
@@ -28,16 +28,23 @@ component "vms" {
   providers = {
     google = provider.google.this
   }
-}*/
+}
 
 variable "regions" {
   description = "List of regions to deploy VMs in"
   type        = set(string)
 }
 
-/*
+
 variable "deploy_gcs" {
-  description = "Flag to deploy Google Cloud Storage bucket"
-  type        = bool
+  description = "Flag to deploy Google Cloud Storage bucket. Because stacks are stupid this way, any one value will do. Leave empty to not deploy."
+  default     = []
+  type        = set(string)
+  /* Apparently we are still in beta, therefore this VERY BASIC block is not supported. Sigh.
+  validation {
+  #  condition     = length(var.deploy_gcs) <= 1
+    error_message = "deploy_gcs must be an empty set or a set with any one string value (It won't be used). Read the description"
+  }
+   */
 }
-*/
+
