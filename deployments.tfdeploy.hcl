@@ -1,5 +1,5 @@
 store "varset" "tokens" {
-  id = "varset-RhxhHwHRB1eFuW3t"
+  id = "varset-RhxhHwHRB1eFuW3t" # Replace with the identifier of your varset.
   category = "terraform"
 }
 

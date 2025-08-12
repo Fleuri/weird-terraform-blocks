@@ -8,7 +8,7 @@ required_providers {
 provider "google" "this" {
   config {
     region  = "europe-north1"
-    project = "ringed-valor-196605"
+    project = "ringed-valor-196605" # Replace with your GCP project ID
     credentials = var.gcp-creds
   }
 }
