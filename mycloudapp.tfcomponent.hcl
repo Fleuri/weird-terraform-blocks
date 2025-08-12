@@ -4,7 +4,7 @@ component "vms" {
   source = "./modules/vm"
 
   inputs = {
-    name         = "prod-vm-${each.value}"
+    name         = "${var.deployment_name}-vm-${each.value}"
     machine_type = "e2-medium"
     zone         = "${each.value}-b"
     image        = "debian-11-bullseye-v20240415"
@@ -35,6 +35,10 @@ variable "regions" {
   type        = set(string)
 }
 
+variable "deployment_name" {
+  description = "The name of the deployment"
+  type        = string
+}
 
 variable "deploy_gcs" {
   description = "Flag to deploy Google Cloud Storage bucket. Because stacks are stupid this way, any one value will do. Leave empty to not deploy."

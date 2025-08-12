@@ -5,6 +5,7 @@ store "varset" "tokens" {
 
 deployment production {
   inputs = {
+    deployment_name = "prod"
     regions = ["europe-north1", "europe-west1", "europe-west2"]
     gcp-creds = store.varset.tokens.gcp-creds
     deploy_gcs = ["true"]
@@ -13,6 +14,7 @@ deployment production {
 
 deployment staging {
   inputs = {
+    deployment_name = "staging"
     regions    = ["europe-north1", "europe-west1"]
     gcp-creds = store.varset.tokens.gcp-creds
     deploy_gcs = []
