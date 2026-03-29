@@ -19,6 +19,7 @@ deployment staging {
     gcp-creds = store.varset.tokens.gcp-creds
     deploy_gcs = []
   }
+  destroy = true
 }
 
 orchestrate "auto_approve" "automatically_apply_staging_changes" {
